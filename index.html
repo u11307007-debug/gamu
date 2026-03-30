@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>貓狗 QR 互動遊戲</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="title">貓狗 QR 互動遊戲</div>
+        <div class="score">分數：<span id="score">0</span></div>
+      </header>
+
+      <main>
+        <section class="round">
+          <div class="prompt" id="prompt">按下「開始遊戲」並授權鏡頭，掃描 QR。</div>
+
+          <div class="image-wrap" aria-label="題目圖片">
+            <img id="targetImage" class="target-image" alt="題目圖片" />
+            <div id="overlay" class="overlay" aria-live="polite"></div>
+          </div>
+
+          <div class="controls">
+            <button id="btnStart" class="btn primary">開始遊戲</button>
+            <button id="btnNext" class="btn" disabled>下一題</button>
+            <button id="btnReset" class="btn danger" disabled>重設</button>
+          </div>
+        </section>
+
+        <section class="camera">
+          <div class="camera-title">鏡頭畫面（只用來掃描 QR）</div>
+          <video id="video" class="video" playsinline muted></video>
+          <canvas id="canvas" class="hidden"></canvas>
+          <div id="scanHint" class="scan-hint">等待授權鏡頭…</div>
+        </section>
+      </main>
+
+      <footer>
+        <div>規則：1 = 狗、2 = 貓、3 = 牛、4 = 羊；每局 10 題。</div>
+        <div class="muted">提示：若鏡頭掃描無法辨識，請試著靠近 QR、調整光線，或放大印刷尺寸。</div>
+      </footer>
+    </div>
+
+    <!-- jsQR：當瀏覽器沒有 BarcodeDetector 時作為備援方案 -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
+
